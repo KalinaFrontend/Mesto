@@ -1,0 +1,7 @@
+.button_place_profile {
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../images/profile-cross.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
