@@ -1,0 +1,13 @@
+.popup__form-profile {
+  box-sizing: border-box;
+  width: 358px;
+  margin: 54px auto 37px;
+}
+
+@media screen and (max-width: 640px) {
+  .popup__form-profile {
+    width: 238px;
+    margin-top: 75px;
+    margin-bottom: 25px;
+  }
+}

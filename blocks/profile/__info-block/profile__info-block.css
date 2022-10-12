@@ -5,3 +5,9 @@
   align-items: center;
   gap: 18px;
 }
+
+@media screen and (max-width: 640px) {
+  .profile__info-block {
+    padding-left: 10px;
+  }
+}

@@ -8,3 +8,18 @@
   /* or 114% */
   color: #FFFFFF;
 }
+
+
+@media screen and (max-width: 1023px) {
+  .profile__info-name {
+  font-size: 27px;
+  line-height: 33px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .profile__info-name {
+    padding-left: 28px;
+  }
+}
+

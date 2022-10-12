@@ -1,12 +1,18 @@
 @import url(../vendor/normalize.css);
+/* font */
+@import url(../vendor/fonts/fonts.css);
 /* page */
 @import url(../blocks/page/page.css);
 /* button */
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_place/button_place_name.css);
 @import url(../blocks/button/_place/button_place_profile.css);
+@import url(../blocks/button/_place/button_place_popup.css);
+@import url(../blocks/button/_place/button_place_popup-input.css);
 @import url(../blocks/button/_type/button_type_add.css);
 @import url(../blocks/button/_type/button_type_edit.css);
+@import url(../blocks/button/_type/button_type_popup-close.css);
+@import url(../blocks/button/_type/button_type_popup-save.css);
 /* header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__line/header__line.css);
@@ -22,5 +28,23 @@
 @import url(../blocks/profile/__info-block/profile__info-block.css);
 @import url(../blocks/profile/__info-name/profile__info-name.css);
 @import url(../blocks/profile/__profession/profile__profession.css);
+/* elements */
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__items/elements__items.css);
+@import url(../blocks/elements/__item/elements__item.css);
+@import url(../blocks/elements/__item-image/elements__item-image.css);
+@import url(../blocks/elements/__item-card/elements__item-card.css);
+@import url(../blocks/elements/__item-title/elements__item-title.css);
+@import url(../blocks/elements/__item-like/element__item-like.css);
 /* footer */
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+/* popup */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__content-title/popup__content-title.css);
+@import url(../blocks/popup/__form-profile/popup__form-profile.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+

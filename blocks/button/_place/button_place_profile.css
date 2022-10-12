@@ -1,7 +1,17 @@
 .button_place_profile {
+  padding: 0;
   width: 150px;
   height: 50px;
   background-image: url(../../../images/profile-cross.svg);
   background-position: center;
   background-repeat: no-repeat;
+}
+
+
+@media screen and (max-width: 640px) {
+  .button_place_profile {
+    margin-top: 36px;
+    width: 282px;
+    height: 50px;
+  }
 }

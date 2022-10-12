@@ -1,0 +1,8 @@
+.elements__item-image {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 282px;
+  margin: 0;
+  padding: 0;
+}

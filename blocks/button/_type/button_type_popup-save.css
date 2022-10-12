@@ -1,0 +1,24 @@
+.button_type_popup-save {
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  width: 358px;
+  height: 50px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
+@media screen and (max-width: 640px) {
+  .button_type_popup-save {
+    width: 238px;
+    height: 47px;
+    margin-top: 45px;
+  }
+}
