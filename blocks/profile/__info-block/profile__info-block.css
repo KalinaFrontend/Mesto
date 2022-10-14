@@ -8,6 +8,7 @@
 
 @media screen and (max-width: 640px) {
   .profile__info-block {
-    padding-left: 10px;
+    padding-left: 9px;
+    gap: 10px;
   }
 }

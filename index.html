@@ -10,65 +10,64 @@
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/header-logo.svg" alt="" class="logo">
-      <hr class="header__line">
+      <img src="./images/header-logo.svg" alt="Логотип Место Россия" class="logo">
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__card">
-          <img src="./images/profile-avatar.jpg" alt="" class="profile__avatar">
+          <img src="./images/profile-avatar.jpg" alt="Аватар пользователя" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__info-block">
               <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-              <button class="button button_place_name button_type_edit"></button>
+              <button class="profile__edit-button"></button>
             </div>
-               <p class="profile__profession">Исследователь океана</p>
+               <p class="profile__job">Исследователь океана</p>
           </div>
         </div>
-        <button class="button button_place_profile button_type_add"></button>
+        <button class="profile__add-button"></button>
       </section>
       <section class="elements">
         <ul class="elements__items">
           <li class="elements__item">
-            <img src="./images/element-altay.jpg" alt="" class="elements__item-image">
+            <img src="./images/element-altay.jpg" alt="Изображение Алтая" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Алтай</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <button class="element__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-baikal.jpg" alt="" class="elements__item-image">
+            <img src="./images/element-baikal.jpg" alt="Изображение Байкала" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Байкал</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <button class="element__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-ergaki.jpg" alt="" class="elements__item-image">
+            <img src="./images/element-ergaki.jpg" alt="Природный парк Ергаки" class="elements__item-image">
             <div class="elements__item-card">
-              <h3 class="elements__item-title">Ергаки</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <h3 class="elements__item-title">Красноярский край</h3>
+              <button class="element__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-kamchatka.jpg"  alt="" class="elements__item-image">
+            <img src="./images/element-kamchatka.jpg"  alt="Камчатка" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Камчатка</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <button class="element__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-murmansk.jpg" alt="" class="elements__item-image">
+            <img src="./images/element-murmansk.jpg" alt="Природа Мурманской области" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Мурманск</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <button class="element__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
-            <img src="./images/element-karelia.jpg" alt="" class="elements__item-image">
+            <img src="./images/element-karelia.jpg" alt="Карелия" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Карелия</h3>
-              <img src="./images/elemant-like.svg" alt="" class="element__item-like">
+              <button class="element__item-like"></button>
             </div>
           </li>
         </ul>
@@ -79,18 +78,18 @@
     </footer>
     <section class="popup">
       <div class="popup__container">
-        <button class="button button_place_popup button_type_popup-close"></button>
+        <button class="popup__close-button"></button>
         <div class="popup__content">
           <h2 class="popup__content-title">Редактировать профиль</h2>
           <form class="popup__form-profile">
             <input type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" >
             <input type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
-            <button class="button button_place_popup-input button_type_popup-save">Сохранить</button>
+            <button class="popup__save-button">Сохранить</button>
           </form>
         </div>
       </div>
     </section>
   </div>
-  <script src="./pages/index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

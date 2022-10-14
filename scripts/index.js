@@ -25,8 +25,8 @@ closeButton.addEventListener ('click', popupClose);
 let formPopup = document.querySelector('.popup__form-profile');
 let nameInput = formPopup.querySelector('.popup__input_type_name')
 let jobInput = formPopup.querySelector('.popup__input_type_job')
-function formSubmitHandler(evt) {
-    evt.preventDefault();
+function formSubmitHandler(e) {
+    e.preventDefault();
     let profileName = document.querySelector('.profile__info-name');
     let profileJob = document.querySelector('.profile__job');
     console.log(nameInput.value);
