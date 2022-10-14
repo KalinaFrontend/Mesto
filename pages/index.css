@@ -3,23 +3,10 @@
 @import url(../vendor/fonts/fonts.css);
 /* page */
 @import url(../blocks/page/page.css);
-/* button */
-@import url(../blocks/button/button.css);
-@import url(../blocks/button/_place/button_place_name.css);
-@import url(../blocks/button/_place/button_place_profile.css);
-@import url(../blocks/button/_place/button_place_popup.css);
-@import url(../blocks/button/_place/button_place_popup-input.css);
-@import url(../blocks/button/_type/button_type_add.css);
-@import url(../blocks/button/_type/button_type_edit.css);
-@import url(../blocks/button/_type/button_type_popup-close.css);
-@import url(../blocks/button/_type/button_type_popup-save.css);
 /* header */
 @import url(../blocks/header/header.css);
-@import url(../blocks/header/__line/header__line.css);
 /* logo */
 @import url(../blocks/logo/logo.css);
-/* content */
-@import url(../blocks/content/);
 /* profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__card/profile__card.css);
