@@ -13,10 +13,7 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  box-sizing: border-box;
-  border: 1px solid #fff;
   background-color: #000;
-  text-align: center;
 }
 
 .popup__save-button:hover {

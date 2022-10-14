@@ -1,7 +1,6 @@
 .popup__close-button {
   box-sizing: border-box;
   border: 1px solid #fff;
-  background-color: #000;
   margin: 0;
   width: 32px;
   height: 32px;
@@ -11,8 +10,6 @@
   background-image:  url(../../../images/Close.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  position: inherit;
   background-color: transparent;
 }
 
