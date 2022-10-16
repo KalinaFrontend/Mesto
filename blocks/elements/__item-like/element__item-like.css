@@ -1,12 +1,18 @@
-.element__item-like {
+.elements__item-like {
   width: 22px;
   height: 19px;
   background-image: url(../../../images/elemant-like.svg);
   background-position: center;
+  cursor: pointer;
   border: none;
   background-color: transparent;
+  transition: .3s ease-in-out;
 }
 
-.element__item-like:hover {
+.elements__item-like:hover {
   opacity: .5;
+}
+
+.elements__item-like:active {
+  background-image: url(../../../../images/elemant-like-active.svg);
 }

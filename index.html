@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Место (mesto) - проектная работа в Яндекс.Практикуме">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Document</title>
+    <title>Mesto</title>
 </head>
-<body>
+<body class="root">
   <div class="page">
     <header class="header">
       <img src="./images/header-logo.svg" alt="Логотип Место Россия" class="logo">
     </header>
-    <main>
+    <main class="content">
       <section class="profile">
         <div class="profile__card">
           <img src="./images/profile-avatar.jpg" alt="Аватар пользователя" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__info-block">
               <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button"></button>
+              <button type="button" class="profile__edit-button"></button>
             </div>
-               <p class="profile__job">Исследователь океана</p>
+            <p class="profile__job">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
       <section class="elements">
         <ul class="elements__items">
@@ -32,42 +33,42 @@
             <img src="./images/element-altay.jpg" alt="Алтай" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Алтай</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
             <img src="./images/element-baikal.jpg" alt="Изображение Байкала" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Байкал</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
             <img src="./images/element-ergaki.jpg" alt="Природный парк Ергаки" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Красноярский край</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
             <img src="./images/element-kamchatka.jpg"  alt="Камчатка" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Камчатка</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
             <img src="./images/element-murmansk.jpg" alt="Природа Мурманской области" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Мурманск</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
           <li class="elements__item">
             <img src="./images/element-karelia.jpg" alt="Карелия" class="elements__item-image">
             <div class="elements__item-card">
               <h3 class="elements__item-title">Карелия</h3>
-              <button class="elements__item-like"></button>
+              <button type="button" class="elements__item-like"></button>
             </div>
           </li>
         </ul>
@@ -77,16 +78,14 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
     <section class="popup">
-      <div class="popup__container">
+      <div class="popup__content">
         <button class="popup__close-button"></button>
-        <div class="popup__content">
-          <h2 class="popup__content-title">Редактировать профиль</h2>
-          <form class="popup__form-profile">
-            <input type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" >
-            <input type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
-            <button class="popup__save-button">Сохранить</button>
-          </form>
-        </div>
+        <h2 class="popup__content-title">Редактировать профиль</h2>
+        <form name="popup-form-profile" class="popup__form-profile">
+          <input name="popup-userName" type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" >
+          <input name="popup-useJob" type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
+          <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
       </div>
     </section>
   </div>
