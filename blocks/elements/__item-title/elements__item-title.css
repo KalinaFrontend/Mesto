@@ -1,6 +1,7 @@
 .elements__item-title {
   box-sizing: border-box;
   margin: 0;
+  max-width: 215px;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
