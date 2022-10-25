@@ -50,9 +50,20 @@ buttonCloseAddElement.addEventListener('click', () => {
 
 // Отправить форму
 function formSubmitHandler(evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    popupClose();
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  popupClose();
 }
 formPopup.addEventListener('submit', formSubmitHandler);
+
+
+likeButton.forEach(likeButton =>
+  likeButton.addEventListener ('click', function () {
+    likeButton.classList.toggle('element__item-like_type_active');
+    }
+))
+
+
+
+
