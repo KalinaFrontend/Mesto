@@ -60,8 +60,12 @@ const createCard = (data) => {
   cardElement.querySelector('.elements__item-like').addEventListener('click', function(evt){
     evt.target.classList.toggle('element__item-like_type_active');
   });
+  cardElement.querySelector('.elements__delete').addEventListener('click', function(evt){
+    evt.target.closest('.elements__item').remove();
+  });
   return cardElement;
 };
+
 //Поместить новую карточку в верстку:
 const renderCard = (data, elementContaner = elementsContaner) => {
   const cardElement = createCard(data);
