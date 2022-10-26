@@ -1,11 +1,11 @@
-.popup__form-profile {
+.popup__form {
   box-sizing: border-box;
   width: 358px;
   margin: 44px auto 37px;
 }
 
 @media screen and (max-width: 640px) {
-  .popup__form-profile {
+  .popup__form {
     width: 238px;
     margin-top: 68px;
     margin-bottom: 25px;
