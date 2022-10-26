@@ -6,8 +6,8 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
 const buttonCloseAddElement = document.querySelector('.popup__close-button_place_add-element');
+/* */
 
-const likeButton = document.querySelectorAll('.element__item-like');
 const saveButton = document.querySelector('.popup__save-button');
 
 const formPopup = document.querySelector('.popup__form-profile');
@@ -16,7 +16,7 @@ const jobInput = formPopup.querySelector('.popup__input_type_job')
 const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__job');
 
-const itemsElements = document.querySelector('.elements__items');
+const elementsContaner = document.querySelector('.elements__items');
 
 // Объявить массив
 const initialCards = [
@@ -46,20 +46,32 @@ const initialCards = [
   }
 ];
 
-// Добавить массив на страницу
-function addElement(namePlace, imagePlace) {
-  console.log('тут1');
-  const elementTemplate = document.querySelector('.template').content;
-  const itemElement = elementTemplate.querySelector('.elements__item').cloneNode(true);
-  itemElement.querySelector('.elements__item-title').textContent = namePlace;
-  itemElement.querySelector('.elements__item-image').setAttribute('src', imagePlace);
-  itemsElements.prepend(itemElement);
+// Создать карточку на основе шаблона template
+const createCard = (data) => {
+  const cardTemplate = document.querySelector('.template').content;
+  const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
+  cardElement.querySelector('.elements__item-title').textContent = data.name;
+  cardElement.querySelector('.elements__item-image').setAttribute('src', data.link);
+  //Обработчик клика на лайк
+  cardElement.querySelector('.elements__item-like').addEventListener('click', function(evt){
+    evt.target.classList.toggle('element__item-like_type_active');
+  });
+  return cardElement;
 };
 
-initialCards.forEach((element) => {
-  addElement(element.name, element.link);
-  console.log('тут');
-});
+
+//Поместить новую карточку в верстку:
+const renderCard = (data, elementContaner = elementsContaner) => {
+  console.log(elementContaner);
+  const cardElement = createCard(data);
+  elementContaner.prepend(cardElement);
+}
+
+
+//добавить начальные карточки в верстку:
+initialCards.forEach(card => { renderCard(card); });
+
+
 
 
 // Открыть форму PopUp
@@ -87,6 +99,9 @@ buttonCloseAddElement.addEventListener('click', () => {
   popupClose(popupAddElement);
 });
 
+// Функции-обработчики:
+
+
 // Отправить форму
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -96,12 +111,7 @@ function formSubmitHandler(evt) {
 }
 formPopup.addEventListener('submit', formSubmitHandler);
 
-// Поставить лайк
-likeButton.forEach(likeButton =>
-  likeButton.addEventListener ('click', function () {
-    likeButton.classList.toggle('element__item-like_type_active');
-    }
-))
+
 
 
 
