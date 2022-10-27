@@ -1,6 +1,7 @@
 /* popups */
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
+const popupImage = document.querySelector('.popup_type_image-view');
 /* popups form */
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
@@ -9,6 +10,7 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
 const buttonCloseAddElement = document.querySelector('.popup__close-button_place_add-element');
+const buttonCloseImage = document.querySelector('.popup__close-button_place_image-view')
 /* */
 
 /* Popup imput*/
@@ -18,6 +20,8 @@ const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__job');
 const inputImageName = document.querySelector('.popup__input_type_image-name');
 const inputImageLink = document.querySelector('.popup__input_type_image-link');
+const imageView = document.querySelector('.popup__image');
+const imageTitle = document.querySelector('.popup__title-image');
 
 
 const elementsContaner = document.querySelector('.elements__items');
@@ -50,6 +54,8 @@ const initialCards = [
   }
 ];
 
+
+
 // Создать карточку на основе шаблона template
 const createCard = (data) => {
   const cardTemplate = document.querySelector('.template').content;
@@ -62,6 +68,11 @@ const createCard = (data) => {
   });
   cardElement.querySelector('.elements__delete').addEventListener('click', function(evt){
     evt.target.closest('.elements__item').remove();
+  });
+  cardElement.querySelector('.elements__item-image').addEventListener('click', function(evt) {
+    popupOpen(popupImage);
+    imageView.setAttribute('src', cardElement.querySelector('.elements__item-image').getAttribute('src'));
+    imageTitle.textContent = data.name;
   });
   return cardElement;
 };
@@ -88,6 +99,7 @@ buttonAdd.addEventListener('click', () => {
   popupOpen(popupAddElement);
 });
 
+
 // Закрыть форму PopUp
 function popupClose(popupWindowClose) {
   popupWindowClose.classList.remove('popup_opened');
@@ -100,7 +112,9 @@ buttonCloseAddElement.addEventListener('click', () => {
   inputImageName.value = '';
   inputImageLink.value = '';
 });
-
+buttonCloseImage.addEventListener('click', () => {
+  popupClose(popupImage);
+})
 // Функции-обработчики:
 
 
