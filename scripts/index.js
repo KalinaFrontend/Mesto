@@ -21,7 +21,7 @@ const profileJob = document.querySelector('.profile__job');
 const inputImageName = document.querySelector('.popup__input_type_image-name');
 const inputImageLink = document.querySelector('.popup__input_type_image-link');
 const imageView = document.querySelector('.popup__image');
-const imageTitle = document.querySelector('.popup__title-image');
+const imageTitle = document.querySelector('.popup__image-title');
 
 
 const elementsContaner = document.querySelector('.elements__items');
