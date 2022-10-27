@@ -1,6 +1,5 @@
 .popup {
   box-sizing: border-box;
-  height: 100%;
   width: 100%;
   position: fixed;
   left: 0;
@@ -10,10 +9,9 @@
   display: block;
   justify-content: center;
   align-items: center;
-
-  transition: opacity .5s ease-out;
   opacity: 0;
   height: 0;
   overflow: hidden;
+  transition: opacity .5s ease-out;
 }
 
