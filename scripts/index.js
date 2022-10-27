@@ -97,6 +97,8 @@ buttonEdit.addEventListener('click', () => {
 });
 buttonAdd.addEventListener('click', () => {
   popupOpen(popupAddElement);
+  inputImageName.value = '';
+  inputImageLink.value = '';
 });
 
 
@@ -109,8 +111,6 @@ buttonCloseProfile.addEventListener('click', ()  => {
 });
 buttonCloseAddElement.addEventListener('click', () => {
   popupClose(popupAddElement);
-  inputImageName.value = '';
-  inputImageLink.value = '';
 });
 buttonCloseImage.addEventListener('click', () => {
   popupClose(popupImage);
