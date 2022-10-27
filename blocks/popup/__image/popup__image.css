@@ -1,4 +1,6 @@
 .popup__image {
+  box-sizing: border-box;
+  vertical-align: bottom;
   max-width: 75vw;
   max-height: 75vh;
 }
