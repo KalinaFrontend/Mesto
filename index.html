@@ -27,7 +27,7 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-      <section class="elements">
+      <section class="elements" aria-label="Фотографии">
         <ul class="elements__items">
         </ul>
       </section>
@@ -36,7 +36,7 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
     <!-- Popup 1 редактирование профиля -->
-    <section class="popup popup_type_edit-profile">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__content">
         <button type="button" class="popup__close-button popup__close-button_place_edit-profile"></button>
         <h2 class="popup__content-title">Редактировать профиль</h2>
@@ -46,9 +46,9 @@
           <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
     <!-- Popup 2 добавление фото -->
-    <section class="popup popup_type_add-element">
+    <div class="popup popup_type_add-element">
       <div class="popup__content">
         <button type="button" class="popup__close-button popup__close-button_place_add-element"></button>
         <h2 class="popup__content-title">Новое место</h2>
@@ -58,15 +58,15 @@
           <button type="submit" class="popup__save-button">Создать</button>
         </form>
       </div>
-    </section>
+    </div>
     <!-- Popup 3 открытие фото -->
-    <section class="popup popup_type_image-view">
-      <div class="popup__image-conteiner">
+    <div class="popup popup_type_image-view">
+      <figure  class="popup__image-conteiner">
         <img src="#" alt="" class="popup__image">
-        <h2 class="popup__image-title"></h2>
+        <figcaption  class="popup__image-title"></figcaption>
         <button class="popup__close-button popup__close-button_place_image-view"></button>
-      </div>
-    </section>
+      </figure>
+    </div>
   </div>
   <!-- Template -->
   <template class="template">
