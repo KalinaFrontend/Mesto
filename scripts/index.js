@@ -1,3 +1,4 @@
+import initialCards from './components/Cards.js';
 /* popups */
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
@@ -11,8 +12,8 @@ const buttonAdd = document.querySelector('.profile__add-button');
 const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
 const buttonCloseAddElement = document.querySelector('.popup__close-button_place_add-element');
 const buttonCloseImage = document.querySelector('.popup__close-button_place_image-view')
-/* */
-
+/* Template */
+const cardTemplate = document.querySelector('.template').content;
 /* Popup imput*/
 const inputName = document.querySelector('.popup__input_type_name')
 const inputJob = document.querySelector('.popup__input_type_job')
@@ -22,74 +23,52 @@ const inputImageName = document.querySelector('.popup__input_type_image-name');
 const inputImageLink = document.querySelector('.popup__input_type_image-link');
 const imageView = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
-
-
+/* Add template*/
 const elementsContaner = document.querySelector('.elements__items');
 
-// Объявить массив
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+/* Add Like */
+function activeLike(evt) {
+  evt.target.classList.toggle('element__item-like_type_active');
+};
 
-
-
-// Создать карточку на основе шаблона template
+/* Создать карточку на основе шаблона template */
 const createCard = (data) => {
-  const cardTemplate = document.querySelector('.template').content;
   const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
+  const imageItem = cardElement.querySelector('.elements__item-image');
   cardElement.querySelector('.elements__item-title').textContent = data.name;
-  cardElement.querySelector('.elements__item-image').setAttribute('src', data.link);
-  //Обработчик клика на лайк
-  cardElement.querySelector('.elements__item-like').addEventListener('click', function(evt){
-    evt.target.classList.toggle('element__item-like_type_active');
+  imageItem.setAttribute('src', data.link);
+  imageItem.setAttribute('alt', data.name);
+  /* Обработчик лайк */
+  cardElement.querySelector('.elements__item-like').addEventListener('click', (evt) => {
+    activeLike(evt)
   });
+  /* Обработчик удаления карточки */
   cardElement.querySelector('.elements__delete').addEventListener('click', function(evt){
     evt.target.closest('.elements__item').remove();
   });
-  cardElement.querySelector('.elements__item-image').addEventListener('click', function(evt) {
+  /* Обработчик открытия карточки */
+  imageItem.addEventListener('click', function(evt) {
     popupOpen(popupImage);
-    imageView.setAttribute('src', cardElement.querySelector('.elements__item-image').getAttribute('src'));
+    imageView.setAttribute('src', imageItem.getAttribute('src'));
+    imageView.setAttribute('alt', data.name);
     imageTitle.textContent = data.name;
   });
   return cardElement;
 };
 
-//Поместить новую карточку в верстку:
+/* Поместить новую карточку в верстку */
 const renderCard = (data, elementContaner = elementsContaner) => {
   const cardElement = createCard(data);
   elementContaner.prepend(cardElement);
 }
-//добавить начальные карточки в верстку:
+/* Добавить начальные карточки в верстку */
 initialCards.forEach(card => { renderCard(card); });
 
-
-// Открыть форму PopUp
+/* Открыть форму PopUp */
 function popupOpen(popupWindowOpen) {
   popupWindowOpen.classList.add('popup_opened');
 };
+
 buttonEdit.addEventListener('click', () => {
   popupOpen(popupProfile);
   inputName.value = profileName.textContent;
@@ -97,15 +76,14 @@ buttonEdit.addEventListener('click', () => {
 });
 buttonAdd.addEventListener('click', () => {
   popupOpen(popupAddElement);
-  inputImageName.value = '';
-  inputImageLink.value = '';
+  popupFormAddElement.reset();
 });
 
-
-// Закрыть форму PopUp
+/* Закрыть форму PopUp */
 function popupClose(popupWindowClose) {
   popupWindowClose.classList.remove('popup_opened');
 };
+
 buttonCloseProfile.addEventListener('click', ()  => {
   popupClose(popupProfile);
 });
@@ -115,10 +93,8 @@ buttonCloseAddElement.addEventListener('click', () => {
 buttonCloseImage.addEventListener('click', () => {
   popupClose(popupImage);
 })
-// Функции-обработчики:
 
-
-// Отправить форму
+/* Отправить форму */
 popupFormProfile.addEventListener('submit', (evt) => {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -132,11 +108,5 @@ popupFormAddElement.addEventListener('submit', (evt) => {
   renderCard(data);
   popupClose(popupAddElement);
 });
-
-//обработка сабмита формы добавления карточки
-
-
-///////////////////////
-///////////////////////
 
 
