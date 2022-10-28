@@ -25,7 +25,6 @@ const imageView = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
 /* Add template*/
 const elementsContaner = document.querySelector('.elements__items');
-
 /* Add Like */
 function activeLike(evt) {
   evt.target.classList.toggle('element__item-like_type_active');
@@ -55,7 +54,6 @@ const createCard = (data) => {
   });
   return cardElement;
 };
-
 /* Поместить новую карточку в верстку */
 const renderCard = (data, elementContaner = elementsContaner) => {
   const cardElement = createCard(data);
@@ -68,6 +66,11 @@ initialCards.forEach(card => { renderCard(card); });
 function popupOpen(popupWindowOpen) {
   popupWindowOpen.classList.add('popup_opened');
 };
+/* Закрыть форму PopUp */
+function popupClose(popupWindowClose) {
+  popupWindowClose.classList.remove('popup_opened');
+};
+
 
 buttonEdit.addEventListener('click', () => {
   popupOpen(popupProfile);
@@ -78,11 +81,6 @@ buttonAdd.addEventListener('click', () => {
   popupOpen(popupAddElement);
   popupFormAddElement.reset();
 });
-
-/* Закрыть форму PopUp */
-function popupClose(popupWindowClose) {
-  popupWindowClose.classList.remove('popup_opened');
-};
 
 buttonCloseProfile.addEventListener('click', ()  => {
   popupClose(popupProfile);
@@ -101,7 +99,6 @@ popupFormProfile.addEventListener('submit', (evt) => {
   profileJob.textContent = inputJob.value;
   popupClose(popupProfile);
 });
-
 popupFormAddElement.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const data = {name: inputImageName.value, link:inputImageLink.value};
