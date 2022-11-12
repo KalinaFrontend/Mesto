@@ -41,11 +41,15 @@
         <button type="button" class="popup__close-button popup__close-button_place_edit-profile"></button>
         <h2 class="popup__content-title">Редактировать профиль</h2>
         <form name="popup-form-profile" class="popup__form">
-          <fieldset class="form_set">
-            <input name="popup-userName" type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" >
-            <input name="popup-useJob" type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
-            <button type="submit" class="popup__save-button">Сохранить</button>
-          </fieldset>
+          <label class="popup__label">
+            <input id="userName-input" name="popup-userName" type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
+            <span class="popup__input-error userName-input-error"></span>
+          </label>
+          <label class="popup__label"></label>
+            <input id="useJob-input" name="popup-useJob" type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
+            <span class="popup__input-error useJob-input-error"></span>
+          </label>
+          <button type="submit" class="popup__save-button">Сохранить</button>
         </form>
       </div>
     </div>
@@ -55,8 +59,14 @@
         <button type="button" class="popup__close-button popup__close-button_place_add-element"></button>
         <h2 class="popup__content-title">Новое место</h2>
         <form name="popup-form-profile" class="popup__form">
-          <input name="popup-imageName" type="text" placeholder="Название" class="popup__input popup__input_type_image-name" >
-          <input name="popup-imageLink" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link">
+          <label class="popup__label">
+            <input id="imageName-input" name="popup-imageName" type="text" placeholder="Название" class="popup__input popup__input_type_image-name" >
+            <span class="popup__input-error  imageName-input-error"></span>
+          </label>
+          <label class="popup__label">
+            <input id="imageLink-input" name="popup-imageLink" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link">
+            <span class="popup__input-error imageLink-input-error"></span>
+          </label>
           <button type="submit" class="popup__save-button">Создать</button>
         </form>
       </div>
