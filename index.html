@@ -40,13 +40,13 @@
       <div class="popup__content">
         <button type="button" class="popup__close-button popup__close-button_place_edit-profile"></button>
         <h2 class="popup__content-title">Редактировать профиль</h2>
-        <form name="popup-form-profile" class="popup__form">
+        <form name="popup-form-profile" class="popup__form" novalidate>
           <label class="popup__label">
             <input id="userName-input" name="popup-userName" type="text" value="Жак-Ив Кусто" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
             <span class="popup__input-error userName-input-error"></span>
           </label>
-          <label class="popup__label"></label>
-            <input id="useJob-input" name="popup-useJob" type="text" value="Исследователь океана" class="popup__input popup__input_type_job">
+          <label class="popup__label">
+            <input id="useJob-input" name="popup-useJob" type="text" value="Исследователь океана" class="popup__input popup__input_type_job" minlength="2" maxlength="200" required>
             <span class="popup__input-error useJob-input-error"></span>
           </label>
           <button type="submit" class="popup__save-button">Сохранить</button>
@@ -58,13 +58,13 @@
       <div class="popup__content">
         <button type="button" class="popup__close-button popup__close-button_place_add-element"></button>
         <h2 class="popup__content-title">Новое место</h2>
-        <form name="popup-form-profile" class="popup__form">
+        <form name="popup-form-profile" class="popup__form" novalidate>
           <label class="popup__label">
-            <input id="imageName-input" name="popup-imageName" type="text" placeholder="Название" class="popup__input popup__input_type_image-name" >
+            <input id="imageName-input" name="popup-imageName" type="text" placeholder="Название" class="popup__input popup__input_type_image-name" minlength="2" maxlength="30" required>
             <span class="popup__input-error  imageName-input-error"></span>
           </label>
           <label class="popup__label">
-            <input id="imageLink-input" name="popup-imageLink" type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link">
+            <input id="imageLink-input" name="popup-imageLink" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" required>
             <span class="popup__input-error imageLink-input-error"></span>
           </label>
           <button type="submit" class="popup__save-button">Создать</button>
@@ -92,5 +92,6 @@
     </li>
   </template>
   <script type="module" src="./scripts/index.js"></script>
+  <script src="./scripts/validateForms.js" defer></script>
 </body>
 </html>
