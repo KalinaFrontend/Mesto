@@ -1,12 +1,12 @@
-/** popups */
+/** Popups */
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
 const popupImage = document.querySelector('.popup_type_image-view');
-/** popups form */
+/** Popups form */
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
-/** buttons */
+/** Buttons */
 const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
@@ -24,10 +24,11 @@ const inputImageName = document.querySelector('.popup__input_type_image-name');
 const inputImageLink = document.querySelector('.popup__input_type_image-link');
 const imageView = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
-/** Add template*/
+/** Добавить template*/
 const elementsContaner = document.querySelector('.elements__items');
-/** Add Like */
-function activeLike(evt) {
+
+/** Поставить Like */
+const activeLike = evt => {
   evt.target.classList.toggle('element__item-like_type_active');
 };
 
