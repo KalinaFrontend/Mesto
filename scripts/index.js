@@ -1,5 +1,6 @@
 import initialCards from './components/Cards.js';
 /* popups */
+const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
 const popupImage = document.querySelector('.popup_type_image-view');
@@ -7,6 +8,7 @@ const popupImage = document.querySelector('.popup_type_image-view');
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
 /* buttons */
+const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
@@ -72,13 +74,8 @@ function popupClose(popupWindowClose) {
   popupWindowClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupWithEscBtn);
 };
-const closePopupClick = (evt) => {
-   const openPopup = document.querySelector('.popup_opened');
-   const closePopupButton = openPopup.querySelector('.popup__close-button');
-   if(evt.target.contains(closePopupButton)) {
-    popupClose(openPopup);
-   }
-};
+
+
 
 const closePopupWithEscBtn = evt => {
   if (evt.key === 'Escape') {
@@ -105,10 +102,16 @@ buttonAdd.addEventListener('click', () => {
   popupOpen(popupAddElement);
 });
 
+popupCloseButtons.forEach( button => button.addEventListener('click', evt => {
+  const popup = evt.target.closest('.popup');
+  popupClose(popup);
+}));
 
-popupProfile.addEventListener('click', closePopupClick);
-popupAddElement.addEventListener('click', closePopupClick);
-popupImage.addEventListener('click', closePopupClick);
+popups.forEach((popupElement)=> {
+  popupElement.addEventListener('mousedown', (evt) => {
+    if(evt.target === evt.currentTarget) popupClose(evt.target);
+  });
+});
 
 /* Отправить форму */
 popupFormProfile.addEventListener('submit', (evt) => {
