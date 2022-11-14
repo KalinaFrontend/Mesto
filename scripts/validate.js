@@ -12,14 +12,14 @@ const showInputError = (formElement, inputElement, inputErrorClass, errorClass) 
   inputElement.classList.add(inputErrorClass);
   inputErrorId.classList.add(errorClass);
   inputErrorId.textContent = inputElement.validationMessage;
-};
+}
 
 const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
   const inputErrorId = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
   inputErrorId.classList.remove(errorClass);
   inputErrorId.textContent = '';
-};
+}
 
 const  checkInputValidity = (formElement, inputElement, inputErrorClass, errorClass) => {
   if (!inputElement.validity.valid) {
@@ -27,7 +27,7 @@ const  checkInputValidity = (formElement, inputElement, inputErrorClass, errorCl
   } else {
       hideInputError(formElement, inputElement, inputErrorClass, errorClass);
   }
-};
+}
 
 const  setEventListeners = (formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass) => {
   const inputSelectorList = Array.from(formElement.querySelectorAll(inputSelector));
@@ -39,7 +39,7 @@ const  setEventListeners = (formElement, inputSelector, submitButtonSelector, in
       toggleSubmitButtonSelector(inputSelectorList, submitButton, inactiveButtonClass);
       });
   });
-};
+}
 
 const enableValidation = ({formSelector, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass}) => {
   const formSelectorList = Array.from(document.querySelectorAll(formSelector));
@@ -49,13 +49,13 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector, in
       });
       setEventListeners(formElement, inputSelector, submitButtonSelector, inactiveButtonClass, inputErrorClass, errorClass);
   });
-};
+}
 
 const hasInvalidInput = (inputSelectorList) => {
   return inputSelectorList.some((inputElement) => {
   return !inputElement.validity.valid;
   });
-};
+}
 
 const toggleSubmitButtonSelector = (inputSelectorList, submitButton, inactiveButtonClass) => {
   if (hasInvalidInput(inputSelectorList)) {
@@ -65,6 +65,6 @@ const toggleSubmitButtonSelector = (inputSelectorList, submitButton, inactiveBut
   submitButton.classList.remove(inactiveButtonClass);
   submitButton.removeAttribute("disabled", "");
   };
-};
+}
 
 enableValidation(settings);
