@@ -68,7 +68,6 @@ const  openPopup = (popupWindowOpen) => {
 const closePopup = (popupWindowClose) => {
   popupWindowClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
-  const submitButtonElement = popupWindowClose.querySelector('.popup__save-button');
 }
 
 /** Закрыть форму PopUp нажатием Esc*/
