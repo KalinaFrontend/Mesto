@@ -12,12 +12,13 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
 const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
 const buttonCloseAddElement = document.querySelector('.popup__close-button_place_add-element');
-const buttonCloseImage = document.querySelector('.popup__close-button_place_image-view')
+const buttonCloseImage = document.querySelector('.popup__close-button_place_image-view');
+const buttonSaveImage = popupFormAddElement.querySelector('.popup__save-button');
 /** Template */
 const cardTemplate = document.querySelector('.template').content;
 /** Popup imput*/
-const inputName = document.querySelector('.popup__input_type_name')
-const inputJob = document.querySelector('.popup__input_type_job')
+const inputName = document.querySelector('.popup__input_type_name');
+const inputJob = document.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__job');
 const inputImageName = document.querySelector('.popup__input_type_image-name');
@@ -68,11 +69,6 @@ const closePopup = (popupWindowClose) => {
   popupWindowClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
   const submitButtonElement = popupWindowClose.querySelector('.popup__save-button');
-/** Сделать button не активным*/
-  if (submitButtonElement) {
-    submitButtonElement.classList.add(settings.inactiveButtonClass);
-    submitButtonElement.setAttribute("disabled", "");
-  }
 }
 
 /** Закрыть форму PopUp нажатием Esc*/
@@ -97,6 +93,11 @@ buttonAdd.addEventListener('click', () => {
   popupFormAddElement.reset();
   hideInputError(popupAddElement, inputImageName, settings.inputErrorClass, settings.errorClass);
   hideInputError(popupAddElement, inputImageLink, settings.inputErrorClass, settings.errorClass);
+  /** Сделать button не активным*/
+  if (!buttonSaveImage.classList.contains(settings.inactiveButtonClass)) {
+    buttonSaveImage.classList.add(settings.inactiveButtonClass);
+    buttonSaveImage.setAttribute("disabled", "");
+  }
   openPopup(popupAddElement);
 });
 
