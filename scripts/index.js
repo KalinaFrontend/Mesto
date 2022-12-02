@@ -81,13 +81,15 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   /** Очистка формы перед открытием */
   popupFormAddElement.reset();
+ // popupFormAddElementValidation.enableValidation();
+    popupFormAddElementValidation.toggleSubmitButtonSelector();
 //  hideInputError(popupAddElement, inputImageName, settings.inputErrorClass, settings.errorClass);
 // hideInputError(popupAddElement, inputImageLink, settings.inputErrorClass, settings.errorClass);
   /** Сделать button не активным*/
-  if (!buttonSaveImage.classList.contains(settings.inactiveButtonClass)) {
-    buttonSaveImage.classList.add(settings.inactiveButtonClass);
-    buttonSaveImage.setAttribute("disabled", "");
-  }
+ // if (!buttonSaveImage.classList.contains(settings.inactiveButtonClass)) {
+ //   buttonSaveImage.classList.add(settings.inactiveButtonClass);
+//    buttonSaveImage.setAttribute("disabled", "");
+ // }
   openPopup(popupAddElement);
 });
 
