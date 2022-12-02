@@ -1,3 +1,5 @@
+import {initialCards} from './ArrCards.js';
+import Card from './Card.js';
 /** Popups */
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
@@ -22,37 +24,18 @@ const inputJob = document.querySelector('.popup__input_type_job');
 const profileName = document.querySelector('.profile__info-name');
 const profileJob = document.querySelector('.profile__job');
 const inputImageName = document.querySelector('.popup__input_type_image-name');
-const inputImageLink = document.querySelector('.popup__input_type_image-link');
-const imageView = document.querySelector('.popup__image');
-const imageTitle = document.querySelector('.popup__image-title');
+const inputImageLink = document.querySelector('.popup__input_type_image-link');;
 /** Добавить template*/
 const elementsContaner = document.querySelector('.elements__items');
 
 /** Создать карточку на основе шаблона template */
-const createCard = (data) => {
-  const cardElement = cardTemplate.querySelector('.elements__item').cloneNode(true);
-  const imageItem = cardElement.querySelector('.elements__item-image');
-  cardElement.querySelector('.elements__item-title').textContent = data.name;
-  imageItem.setAttribute('src', data.link);
-  imageItem.setAttribute('alt', data.name);
-  /** Обработчик лайк */
-  cardElement.querySelector('.elements__item-like').addEventListener('click', evt => evt.target.classList.toggle('element__item-like_type_active'));
-  /** Обработчик удаления карточки */
-  cardElement.querySelector('.elements__delete').addEventListener('click', evt => evt.target.closest('.elements__item').remove());
-  /** Обработчик открытия карточки */
-  imageItem.addEventListener('click', () => {
-    openPopup(popupImage);
-    imageView.setAttribute('src', imageItem.getAttribute('src'));
-    imageView.setAttribute('alt', data.name);
-    imageTitle.textContent = data.name;
-  });
-  return cardElement;
-};
+
+
 
 /** Поместить новую карточку в верстку */
-const renderCard = (data, elementContaner = elementsContaner) => {
-  const cardElement = createCard(data);
-  elementContaner.prepend(cardElement);
+const renderCard = (data) => {
+  const card = new Card(data, '#template');
+  elementsContaner.prepend(card.generateCard());
 };
 
 /** Добавить начальные карточки в верстку */
@@ -63,6 +46,8 @@ const  openPopup = (popupWindowOpen) => {
   popupWindowOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 }
+
+export { openPopup };
 
 /** Закрыть форму PopUp */
 const closePopup = (popupWindowClose) => {
