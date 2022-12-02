@@ -19,7 +19,7 @@ export default class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
   } else {
-    this._hideInputError(inputElement);
+    this.hideInputError(inputElement);
   }
   }
 
@@ -30,7 +30,7 @@ export default class FormValidator {
     inputErrorId.textContent = inputElement.validationMessage;
   }
 
-  _hideInputError = inputElement => {
+  hideInputError = inputElement => {
     const inputErrorId = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._settings.inputErrorClass);
     inputErrorId.classList.remove(this._settings.errorClass);
