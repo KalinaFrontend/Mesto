@@ -4,14 +4,6 @@
 имеет приватные методы, которые обрабатывают форму: проверяют валидность поля, изменяют состояние кнопки сабмита, устанавливают все обработчики;
 имеет публичный метод enableValidation, который включает валидацию формы.
 Для каждой проверяемой формы создайте экземпляр класса FormValidator. */
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
 
 
 export default class FormValidator {
@@ -28,7 +20,7 @@ export default class FormValidator {
 
     this._inputSelectorList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
-    this._checkInputValidity();
+    this._checkInputValidity(inputElement);
     this._toggleSubmitButtonSelector();
     });
   });
@@ -58,9 +50,9 @@ export default class FormValidator {
 
 
   _toggleSubmitButtonSelector() {
-    if (hasInvalidInput(this._inputSelectorList)) {
+    if (this._hasInvalidInput(this._inputSelectorList)) {
       this._submitButton.classList.add(this._settings.inactiveButtonClass);
-      sthis._submitButton.setAttribute("disabled", "");
+      this._submitButton.setAttribute("disabled", "");
       } else {
         this._submitButton.classList.remove(this._settings.inactiveButtonClass);
         this._submitButton.removeAttribute("disabled", "");
@@ -75,13 +67,10 @@ export default class FormValidator {
 
 
   enableValidation() {
-    this._formElements.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
+      this._formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
-        this._setEventListeners();
       })
-    });
-
+      this._setEventListeners();
   }
 
 }
@@ -136,14 +125,14 @@ export default class FormValidator {
 //  });
 //}
 
-const toggleSubmitButtonSelector = (inputSelectorList, submitButton, inactiveButtonClass) => {
-  if (hasInvalidInput(inputSelectorList)) {
-  submitButton.classList.add(inactiveButtonClass);
-  submitButton.setAttribute("disabled", "");
-  } else {
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.removeAttribute("disabled", "");
-  };
-}
+//const toggleSubmitButtonSelector = (inputSelectorList, submitButton, inactiveButtonClass) => {
+ // if (hasInvalidInput(inputSelectorList)) {
+ // submitButton.classList.add(inactiveButtonClass);
+ // submitButton.setAttribute("disabled", "");
+ // } else {
+ // submitButton.classList.remove(inactiveButtonClass);
+ // submitButton.removeAttribute("disabled", "");
+ // };
+//}
 
 //enableValidation(settings);

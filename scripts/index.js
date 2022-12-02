@@ -1,5 +1,6 @@
 import {initialCards} from './ArrCards.js';
 import Card from './Card.js';
+import FormValidator from './FormValidator.js'
 /** Popups */
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
@@ -28,9 +29,14 @@ const inputImageLink = document.querySelector('.popup__input_type_image-link');;
 /** Добавить template*/
 const elementsContaner = document.querySelector('.elements__items');
 
-/** Создать карточку на основе шаблона template */
-
-
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+}
 
 /** Поместить новую карточку в верстку */
 const renderCard = (data) => {
@@ -75,8 +81,8 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   /** Очистка формы перед открытием */
   popupFormAddElement.reset();
-  hideInputError(popupAddElement, inputImageName, settings.inputErrorClass, settings.errorClass);
-  hideInputError(popupAddElement, inputImageLink, settings.inputErrorClass, settings.errorClass);
+//  hideInputError(popupAddElement, inputImageName, settings.inputErrorClass, settings.errorClass);
+// hideInputError(popupAddElement, inputImageLink, settings.inputErrorClass, settings.errorClass);
   /** Сделать button не активным*/
   if (!buttonSaveImage.classList.contains(settings.inactiveButtonClass)) {
     buttonSaveImage.classList.add(settings.inactiveButtonClass);
@@ -112,3 +118,7 @@ popupFormAddElement.addEventListener('submit', evt => {
   closePopup(popupAddElement);
 });
 
+const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
+const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
+popupFormProfileValidation.enableValidation();
+popupFormAddElementValidation.enableValidation();
