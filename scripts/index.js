@@ -5,20 +5,12 @@ import FormValidator from './FormValidator.js'
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
-const popupImage = document.querySelector('.popup_type_image-view');
 /** Popups form */
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
 /** Buttons */
-const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
-const buttonCloseProfile = document.querySelector('.popup__close-button_place_edit-profile');
-const buttonCloseAddElement = document.querySelector('.popup__close-button_place_add-element');
-const buttonCloseImage = document.querySelector('.popup__close-button_place_image-view');
-const buttonSaveImage = popupFormAddElement.querySelector('.popup__save-button');
-/** Template */
-const cardTemplate = document.querySelector('.template').content;
 /** Popup imput*/
 const inputName = document.querySelector('.popup__input_type_name');
 const inputJob = document.querySelector('.popup__input_type_job');
@@ -52,7 +44,6 @@ const  openPopup = (popupWindowOpen) => {
   popupWindowOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 }
-
 export { openPopup };
 
 /** Закрыть форму PopUp */
@@ -97,8 +88,6 @@ popups.forEach( popup => {
     }
   });
 });
-
-
 
 /** Отправить форму */
 popupFormProfile.addEventListener('submit', evt => {

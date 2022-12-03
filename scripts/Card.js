@@ -13,7 +13,7 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document.querySelector(this._cardTemplate).content.querySelector('.elements__item').cloneNode(true);
+    const cardElement = document.querySelector(this._cardTemplate).content.querySelector('.elements__item').cloneNode(true).children[0];
     return cardElement;
   }
 
@@ -41,7 +41,5 @@ export default class Card {
       imageView.setAttribute('alt', this._name);
       imageTitle.textContent = this._name;
     });
-
   }
-
 }
