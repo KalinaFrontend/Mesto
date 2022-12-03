@@ -4,7 +4,6 @@ const popupImage = document.querySelector('.popup_type_image-view');
 const imageView = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
 
-
 export default class Card {
   constructor (data, cardTemplate){
      this._name = data.name;
