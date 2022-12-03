@@ -11,12 +11,12 @@ export default class Card {
      this._cardTemplate = cardTemplate;
   }
 
-  _getTemplate() {
-    const cardElement = document.querySelector(this._cardTemplate).content.querySelector('.elements__item').cloneNode(true).children[0];
+  _getTemplate = () => {
+    const cardElement = document.querySelector(this._cardTemplate).content.querySelector('.elements__item').cloneNode(true);
     return cardElement;
   }
 
-  generateCard() {
+  generateCard = () => {
     this._cardElement = this._getTemplate();
     this._imageItem = this._cardElement.querySelector('.elements__item-image');
     this._cardElement.querySelector('.elements__item-title').textContent = this._name;
@@ -27,7 +27,7 @@ export default class Card {
     return this._cardElement ;
   }
 
-  _setEventListener() {
+  _setEventListener = () => {
     this._cardElement.querySelector('.elements__item-like')
     .addEventListener('click', evt => evt.target.classList.toggle('element__item-like_type_active'));
 
