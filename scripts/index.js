@@ -5,6 +5,9 @@ import FormValidator from './FormValidator.js'
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const popupAddElement = document.querySelector('.popup_type_add-element');
+const popupImage = document.querySelector('.popup_type_image-view');
+const imageView = document.querySelector('.popup__image');
+const imageTitle = document.querySelector('.popup__image-title');
 /** Popups form */
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
@@ -30,11 +33,18 @@ const settings = {
   errorClass: 'popup__input-error_active'
 }
 
+
 /** Поместить новую карточку в верстку */
 const renderCard = (data) => {
-  const card = new Card(data, '#template');
-  elementsContaner.prepend(card.generateCard());
+  elementsContaner.prepend(createCard(data));
 };
+
+/** Создать новую карточку */
+const createCard = (data) => {
+  const card = new Card(data, '#template', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement
+}
 
 /** Добавить начальные карточки в верстку */
 initialCards.forEach(card => renderCard(card));
@@ -44,7 +54,14 @@ const  openPopup = (popupWindowOpen) => {
   popupWindowOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
 }
-export { openPopup };
+
+
+function handleCardClick (name, link) {
+  imageView.setAttribute('src', link);
+  imageView.setAttribute('alt', name);
+  imageTitle.textContent = name;
+  openPopup(popupImage);
+}
 
 /** Закрыть форму PopUp */
 const closePopup = (popupWindowClose) => {
@@ -72,9 +89,7 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   /** Очистка формы перед открытием */
   popupFormAddElement.reset();
-  popupFormAddElementValidation.toggleSubmitButtonSelector();
-  popupFormAddElementValidation.hideInputError(inputImageName);
-  popupFormAddElementValidation.hideInputError(inputImageLink);
+  popupFormAddElementValidation.resetValidation();
   openPopup(popupAddElement);
 });
 
@@ -103,6 +118,7 @@ popupFormAddElement.addEventListener('submit', evt => {
   renderCard(data);
   closePopup(popupAddElement);
 });
+
 
 const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
