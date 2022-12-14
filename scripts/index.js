@@ -3,6 +3,7 @@ import Card from './Card.js';
 import FormValidator from './FormValidator.js'
 import Section from './Section.js'
 import Popup from './Popup.js'
+import PopupWithForm from './PopupWithForm.js';
 /** Popups */
 const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
@@ -126,3 +127,12 @@ const popupFormProfileValidation = new FormValidator(settings, popupFormProfile)
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
 popupFormProfileValidation.enableValidation();
 popupFormAddElementValidation.enableValidation();
+
+
+
+// Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
+const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
+  evt.preventDefault();
+  const dataForm = popupProfileWithForm.getData();
+
+})

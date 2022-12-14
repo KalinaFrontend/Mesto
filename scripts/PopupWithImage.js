@@ -11,6 +11,6 @@ export default class PopupWithImage extends Popup{
     imageView.setAttribute('src', link);
     imageView.setAttribute('alt', name);
     imageTitle.textContent = name;
-    super(open);
+    super.open();
   }
 }
