@@ -60,13 +60,10 @@ function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
 
-
 const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
 popupFormProfileValidation.enableValidation();
 popupFormAddElementValidation.enableValidation();
-
-
 
 const userInfo = new UserInfo({
   nameSelector: popupUserName,
@@ -80,7 +77,18 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
   popupProfileWithForm.close();
 })
 
+const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
+ evt.preventDefault();
+ const dataForm = popupAddElementForm.getData();
+
+ const card = new Card(dataForm, '#template', handleCardClick);
+ const newcard = card.generateCard();
+ section.addItem(newcard);
+ popupAddElementForm.close();
+});
+
 popupProfileWithForm.setEventListeners();
+popupAddElementForm.setEventListeners();
 
 buttonEdit.addEventListener('click', () => {
   const dataForm = userInfo.getUserInfo();
@@ -91,8 +99,9 @@ buttonEdit.addEventListener('click', () => {
   popupProfileWithForm.open();
 })
 
-
-
+buttonAdd.addEventListener('click', () => {
+  popupAddElementForm.open();
+});
 
 const popupWithImage = new PopupWithImage(popupImage);
 
