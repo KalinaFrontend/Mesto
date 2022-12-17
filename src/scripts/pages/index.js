@@ -22,7 +22,7 @@ import {
   settings
 } from '../utils/constants.js'
 
-/** Создать новую карточку */
+/** Инициализация класса Section -  который отвечает за отрисовку элементов на странице */
 const section = new Section({
   items: initialCards,
   renderer: (data) => {
@@ -31,7 +31,7 @@ const section = new Section({
   }
 },'.elements__items');
 
-//* Загрузить начальные карточки */
+/** Загрузить начальные карточки */
 section.renderItems();
 
 
@@ -39,17 +39,20 @@ function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
 
+/** Инициализация класса FormValidator - отвечает валидацию форм */
 const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
 popupFormProfileValidation.enableValidation();
 popupFormAddElementValidation.enableValidation();
 
+
+/** Инициализация класса UserInfo - отвечает за управление отображением информации о пользователе на странице */
 const userInfo = new UserInfo({
   nameSelector: popupUserName,
   jobSelector: popupUseJob
 });
 
-// Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
+/** Инициализация класса PopupWithForm для PopUp редактирования профиля */
 const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
   evt.preventDefault();
   const dataForm = popupProfileWithForm.getData();
@@ -57,6 +60,7 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
   popupProfileWithForm.close();
 })
 
+/** Инициализация класса PopupWithForm для PopUp добавления карточкия */
 const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
  evt.preventDefault();
  const dataForm = popupAddElementForm.getData();
@@ -68,6 +72,9 @@ const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
 
 popupProfileWithForm.setEventListeners();
 popupAddElementForm.setEventListeners();
+
+/** Инициализация класса PopupWithImage для PopUp просмотра карточки */
+const popupWithImage = new PopupWithImage(popupImage);
 
 buttonEdit.addEventListener('click', () => {
   const dataForm = userInfo.getUserInfo();
@@ -82,6 +89,4 @@ buttonAdd.addEventListener('click', () => {
   popupFormAddElementValidation.resetValidation();
   popupAddElementForm.open();
 });
-
-const popupWithImage = new PopupWithImage(popupImage);
 
