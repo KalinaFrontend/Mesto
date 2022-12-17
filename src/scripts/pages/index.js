@@ -60,7 +60,6 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
 const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
  evt.preventDefault();
  const dataForm = popupAddElementForm.getData();
-
  const card = new Card(dataForm, '#template', handleCardClick);
  const newcard = card.generateCard();
  section.addItem(newcard);
@@ -80,6 +79,7 @@ buttonEdit.addEventListener('click', () => {
 })
 
 buttonAdd.addEventListener('click', () => {
+  popupFormAddElementValidation.resetValidation();
   popupAddElementForm.open();
 });
 
