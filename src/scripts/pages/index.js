@@ -1,35 +1,26 @@
-import {initialCards} from './ArrCards.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js'
-import Section from './Section.js'
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import UserInfo from './UserInfo.js';
-/** Popups */
-const popupProfile = document.querySelector('.popup_type_edit-profile');
-const popupAddElement = document.querySelector('.popup_type_add-element');
-const popupImage = document.querySelector('.popup_type_image-view');
-/** Popup imput*/
-const popupUserNameValue = document.querySelector('#userName-input');
-const popupUseJobValue = document.querySelector('#useJob-input');
-/** Profile value*/
-const popupUserName = document.querySelector('.profile__info-name');
-const popupUseJob = document.querySelector('.profile__job');
-/** Popups form */
-const popupFormProfile = popupProfile.querySelector('.popup__form');
-const popupFormAddElement = popupAddElement.querySelector('.popup__form');
-/** Buttons */
-const buttonEdit = document.querySelector('.profile__edit-button');
-const buttonAdd = document.querySelector('.profile__add-button');
+import {initialCards} from '../utils/arrCards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js'
+import Section from '../components/Section.js'
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
+import '../../pages/index.css';
 
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
+import {
+  popupProfile,
+  popupAddElement,
+  popupImage,
+  popupUserNameValue,
+  popupUseJobValue,
+  popupUserName,
+  popupUseJob,
+  popupFormProfile,
+  popupFormAddElement,
+  buttonEdit,
+  buttonAdd,
+  settings
+} from '../utils/constants.js'
 
 /** Создать новую карточку */
 const section = new Section({
