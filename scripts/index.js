@@ -2,38 +2,25 @@ import {initialCards} from './ArrCards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js'
 import Section from './Section.js'
-import Popup from './Popup.js'
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import UserInfo from './UserInfo.js';
 /** Popups */
-const popups = document.querySelectorAll('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
-const popupUserNameValue = document.querySelector('#userName-input');
-const popupUseJobValue = document.querySelector('#useJob-input');
-
-const popupUserName = document.querySelector('.profile__info-name');
-const popupUseJob = document.querySelector('.profile__job');
-
 const popupAddElement = document.querySelector('.popup_type_add-element');
 const popupImage = document.querySelector('.popup_type_image-view');
-const imageView = document.querySelector('.popup__image');
-const imageTitle = document.querySelector('.popup__image-title');
+/** Popup imput*/
+const popupUserNameValue = document.querySelector('#userName-input');
+const popupUseJobValue = document.querySelector('#useJob-input');
+/** Profile value*/
+const popupUserName = document.querySelector('.profile__info-name');
+const popupUseJob = document.querySelector('.profile__job');
 /** Popups form */
 const popupFormProfile = popupProfile.querySelector('.popup__form');
 const popupFormAddElement = popupAddElement.querySelector('.popup__form');
 /** Buttons */
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonAdd = document.querySelector('.profile__add-button');
-/** Popup imput*/
-const inputName = document.querySelector('.popup__input_type_name');
-const inputJob = document.querySelector('.popup__input_type_job');
-const profileName = document.querySelector('.profile__info-name');
-const profileJob = document.querySelector('.profile__job');
-const inputImageName = document.querySelector('.popup__input_type_image-name');
-const inputImageLink = document.querySelector('.popup__input_type_image-link');;
-/** Добавить template*/
-const elementsContaner = document.querySelector('.elements__items');
 
 const settings = {
   formSelector: '.popup__form',
@@ -56,6 +43,7 @@ const section = new Section({
 //* Загрузить начальные карточки */
 section.renderItems();
 
+
 function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
@@ -69,6 +57,7 @@ const userInfo = new UserInfo({
   nameSelector: popupUserName,
   jobSelector: popupUseJob
 });
+
 // Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
 const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
   evt.preventDefault();
