@@ -1,5 +1,4 @@
 //Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.
-
 export default class UserInfo {
     constructor({nameSelector, jobSelector}) {
         this._name = nameSelector;

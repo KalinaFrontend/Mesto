@@ -22,15 +22,26 @@ export default class Card {
     return this._cardElement ;
   }
 
-  _setEventListener = () => {
+  _toggleLike() {
     this._cardElement.querySelector('.elements__item-like')
     .addEventListener('click', evt => evt.target.classList.toggle('element__item-like_type_active'));
 
+  }
+
+  _deleteCard() {
     this._cardElement.querySelector('.elements__delete')
     .addEventListener('click', evt => evt.target.closest('.elements__item').remove());
+  }
 
+  _handleImageClick() {
     this._imageItem.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
     });
+  }
+
+  _setEventListener = () => {
+    this._toggleLike();
+    this._deleteCard();
+    this._handleImageClick()
   }
 }

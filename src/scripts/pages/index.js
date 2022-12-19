@@ -55,33 +55,27 @@ const userInfo = new UserInfo({
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
 const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
   evt.preventDefault();
-  const dataForm = popupProfileWithForm.getData();
-  userInfo.setUserInfo(dataForm);
+  const data = popupProfileWithForm.getData();
+  userInfo.setUserInfo(data);
   popupProfileWithForm.close();
 })
 
 /** Инициализация класса PopupWithForm для PopUp добавления карточкия */
 const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
  evt.preventDefault();
- const dataForm = popupAddElementForm.getData();
- const card = new Card(dataForm, '#template', handleCardClick);
- const newcard = card.generateCard();
- section.addItem(newcard);
+ section.addItem(popupAddElementForm.getData());
  popupAddElementForm.close();
 });
-
-popupProfileWithForm.setEventListeners();
-popupAddElementForm.setEventListeners();
 
 /** Инициализация класса PopupWithImage для PopUp просмотра карточки */
 const popupWithImage = new PopupWithImage(popupImage);
 
+popupProfileWithForm.setEventListeners();
+popupAddElementForm.setEventListeners();
+popupWithImage.setEventListeners();
+
 buttonEdit.addEventListener('click', () => {
-  const dataForm = userInfo.getUserInfo();
-  popupUserNameValue.value = dataForm.name;
-  popupUserNameValue.dispatchEvent(new Event('input'));
-  popupUseJobValue.value = dataForm.job;
-  popupUseJobValue.dispatchEvent(new Event('input'));
+  popupProfileWithForm.setInputValues(userInfo.getUserInfo());
   popupProfileWithForm.open();
 })
 
