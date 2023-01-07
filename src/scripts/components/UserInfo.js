@@ -12,7 +12,7 @@ export default class UserInfo {
     getUserInfo() {
       const userInfoData = {
         name: this._name.textContent,
-        job: this._job.textContent
+        about: this._job.textContent
       }
       return userInfoData;
     }

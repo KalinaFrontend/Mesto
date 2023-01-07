@@ -4,6 +4,14 @@ export default class Api {
     this._token = token
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`${res.status} ${res.statusText}`);
+    }
+  }
+
   getUserInfo() {
     return fetch(`https://nomoreparties.co/v1/${this._cohort}/users/me`, {
       method: 'GET',
@@ -13,6 +21,17 @@ export default class Api {
       }
     })
     .then(res => res.json())
+  }
+
+  setUserInfo(forms) {
+    return fetch(`https://nomoreparties.co/v1/${this._cohort}/users/me`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(forms)
+    }).then(this._checkResponse);
   }
 
   getCard() {
@@ -25,4 +44,6 @@ export default class Api {
     })
     .then(res => res.json())
   }
+
+
 }

@@ -50,9 +50,6 @@ section.addItem(cardNew);
 });
 });
 
-
-
-
 function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
@@ -79,11 +76,12 @@ api.getUserInfo()
 
 
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
-const popupProfileWithForm = new PopupWithForm(popupProfile, (evt) => {
-  evt.preventDefault();
-  const data = popupProfileWithForm.getData();
-userInfo.setUserInfo(data);
-  popupProfileWithForm.close();
+const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
+  api.setUserInfo({name: data.name, about: data.about})
+    .then((res) => {
+      userInfo.setUserInfo(res)
+      popupProfileWithForm.close();
+    })
 })
 
 /** Инициализация класса PopupWithForm для PopUp добавления карточкия */
