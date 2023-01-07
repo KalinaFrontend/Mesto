@@ -1,8 +1,9 @@
 //Принимает в конструктор объект с селекторами двух элементов: элемента имени пользователя и элемента информации о себе.
 export default class UserInfo {
-    constructor({nameSelector, jobSelector}) {
+    constructor({nameSelector, jobSelector, avatarSelector}) {
         this._name = nameSelector;
         this._job = jobSelector;
+        this._avatar = avatarSelector
     }
 
 
@@ -18,9 +19,9 @@ export default class UserInfo {
 
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo({name, about}) {
-        console.log(about);
+    setUserInfo({name, about, avatar}) {
         this._name.textContent = name;
         this._job.textContent = about;
+        this._avatar.setAttribute('src', avatar)
         }
     }

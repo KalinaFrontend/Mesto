@@ -8,6 +8,7 @@ export const popupUseJobValue = document.querySelector('#useJob-input');
 /** Profile value*/
 export const popupUserName = document.querySelector('.profile__info-name');
 export const popupUseJob = document.querySelector('.profile__job');
+export const popupUserAvatar = document.querySelector('.profile__avatar');
 /** Popups form */
 export const popupFormProfile = popupProfile.querySelector('.popup__form');
 export const popupFormAddElement = popupAddElement.querySelector('.popup__form');

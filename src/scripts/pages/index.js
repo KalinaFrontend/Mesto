@@ -16,6 +16,7 @@ import {
   popupUseJobValue,
   popupUserName,
   popupUseJob,
+  popupUserAvatar,
   popupFormProfile,
   popupFormAddElement,
   buttonEdit,
@@ -66,9 +67,11 @@ popupFormAddElementValidation.enableValidation();
 /** Инициализация класса UserInfo - отвечает за управление отображением информации о пользователе на странице */
 const userInfo = new UserInfo({
   nameSelector: popupUserName,
-  jobSelector: popupUseJob
+  jobSelector: popupUseJob,
+  avatarSelector: popupUserAvatar
 });
 
+/** Загрузить информации о пользователе */
 api.getUserInfo()
 .then(res => {
   userInfo.setUserInfo(res)
