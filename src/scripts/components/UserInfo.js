@@ -18,8 +18,9 @@ export default class UserInfo {
 
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo({name, job}) {
+    setUserInfo({name, about}) {
+        console.log(about);
         this._name.textContent = name;
-        this._job.textContent = job;
-          }
+        this._job.textContent = about;
+        }
     }

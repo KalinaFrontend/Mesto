@@ -14,6 +14,8 @@ export const popupFormAddElement = popupAddElement.querySelector('.popup__form')
 /** Buttons */
 export const buttonEdit = document.querySelector('.profile__edit-button');
 export const buttonAdd = document.querySelector('.profile__add-button');
+export const cohort = 'cohort-57';
+export const token = 'd6b12eaa-53c5-4aec-ba1e-36329f6f2544';
 
 export const settings = {
   formSelector: '.popup__form',
