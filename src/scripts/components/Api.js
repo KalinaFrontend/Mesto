@@ -8,6 +8,7 @@ export default class Api {
     if (res.ok) {
       return res.json();
     } else {
+      console.log('тут')
       return Promise.reject(`${res.status} ${res.statusText}`);
     }
   }
@@ -45,5 +46,19 @@ export default class Api {
     .then(res => res.json())
   }
 
+  setCard({name, link}) {
+    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
+      method: 'POST',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        link
+      })
+    })
+    .then(this._checkResponse);
+  }
 
 }

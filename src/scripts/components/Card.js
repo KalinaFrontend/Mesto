@@ -1,13 +1,10 @@
 export default class Card {
-  constructor ( {createdAt, likes, link, name, owner, _id}, cardTemplate, handleCardClick){
+  constructor ( {link, name, likes}, cardTemplate, handleCardClick){
     this._name = name;
     this._link = link;
-    this._likes = likes;
-    this._owner = owner;
-    this._createdAt = createdAt;
-    this._id = _id;
-     this._cardTemplate = cardTemplate;
-     this._handleCardClick = handleCardClick;
+    this._like = likes;
+    this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate = () => {
@@ -18,9 +15,11 @@ export default class Card {
   generateCard = () => {
       this._cardElement = this._getTemplate();
       this._imageItem = this._cardElement.querySelector('.elements__item-image');
+      this._likeItem = this._cardElement.querySelector('.elements__item-number-likes');
       this._cardElement.querySelector('.elements__item-title').textContent = this._name;
       this._imageItem.setAttribute('src', this._link);
       this._imageItem.setAttribute('alt', this._name);
+      this._likeItem.textContent = this._like.length;
       this._setEventListener();
       return this._cardElement ;
     }
@@ -28,7 +27,6 @@ export default class Card {
 
   _toggleLike(evt) {
     evt.target.classList.toggle('element__item-like_type_active');
-
   }
 
   _deleteCard(evt) {
@@ -39,6 +37,9 @@ export default class Card {
       this._handleCardClick(this._name, this._link);
     };
 
+  _setLike() {
+
+  }
 
   _setEventListener = () => {
     this._cardElement.querySelector('.elements__item-like')

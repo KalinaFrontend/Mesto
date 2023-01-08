@@ -25,6 +25,7 @@ import {
   token,
   settings
 } from '../utils/constants.js'
+import { data } from 'autoprefixer';
 
 const cards = {};
 
@@ -43,6 +44,7 @@ const section = new Section({
 /** Загрузить начальные карточки */
 api.getCard()
 .then(res => {
+console.log(res);
 section.clear();
 res.forEach(data => {
 const cardNew = section.renderItems(data);
@@ -77,7 +79,8 @@ api.getUserInfo()
 
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
 const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
-  api.setUserInfo({name: data.name, about: data.about})
+  console.log(data)
+  api.setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res)
       popupProfileWithForm.close();
@@ -85,10 +88,14 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
 })
 
 /** Инициализация класса PopupWithForm для PopUp добавления карточкия */
-const popupAddElementForm = new PopupWithForm(popupAddElement, (evt) => {
- evt.preventDefault();
- section.addItem(popupAddElementForm.getData());
- popupAddElementForm.close();
+const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
+
+  api.setCard(data)
+  .then((res) => {
+    const cardNew = section.renderItems(res);
+    section.addItem(cardNew);
+  })
+  popupAddElementForm.close();
 });
 
 /** Инициализация класса PopupWithImage для PopUp просмотра карточки */
