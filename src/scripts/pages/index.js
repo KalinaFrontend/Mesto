@@ -4,6 +4,7 @@ import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithDelete from '../components/PopupWithDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import '../../pages/index.css';
@@ -12,6 +13,7 @@ import {
   popupProfile,
   popupAddElement,
   popupImage,
+  popupDelete,
   popupUserNameValue,
   popupUseJobValue,
   popupUserName,
@@ -35,7 +37,7 @@ const api = new Api(cohort, token);
 const section = new Section({
   items: [],
   renderer: (data) => {
-    const card = new Card(data, '#template', handleCardClick);
+    const card = new Card(data, '#template', handleCardClick, handleDeleteClick);
     return card.generateCard();
   }
 },'.elements__items');
@@ -54,6 +56,11 @@ section.addItem(cardNew);
 
 function handleCardClick (name, link) {
   popupWithImage.open(name, link);
+}
+
+function handleDeleteClick (id) {
+  popupWithDelete.setDeleteCard(id);
+  popupWithDelete.open();
 }
 
 /** Инициализация класса FormValidator - отвечает валидацию форм */
@@ -87,7 +94,7 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
     })
 })
 
-/** Инициализация класса PopupWithForm для PopUp добавления карточкия */
+/** Инициализация класса PopupWithForm для PopUp добавления карточки */
 const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
 
   api.setCard(data)
@@ -101,12 +108,16 @@ const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
 /** Инициализация класса PopupWithImage для PopUp просмотра карточки */
 const popupWithImage = new PopupWithImage(popupImage);
 
+/** Инициализация класса PopupWithDelete для PopUp удаления карточки */
+const popupWithDelete = new PopupWithDelete(popupDelete, data => {
 
+});
 
 
 popupProfileWithForm.setEventListeners();
 popupAddElementForm.setEventListeners();
 popupWithImage.setEventListeners();
+popupWithDelete.setEventListeners();
 
 buttonEdit.addEventListener('click', () => {
   popupProfileWithForm.setInputValues(userInfo.getUserInfo());

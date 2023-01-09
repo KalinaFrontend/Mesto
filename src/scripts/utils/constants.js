@@ -2,6 +2,7 @@
 export const popupProfile = document.querySelector('.popup_type_edit-profile');
 export const popupAddElement = document.querySelector('.popup_type_add-element');
 export const popupImage = document.querySelector('.popup_type_image-view');
+export const popupDelete = document.querySelector('.popup_type_delite-card');
 /** Popup imput*/
 export const popupUserNameValue = document.querySelector('#userName-input');
 export const popupUseJobValue = document.querySelector('#useJob-input');
