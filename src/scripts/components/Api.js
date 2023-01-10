@@ -6,6 +6,7 @@ export default class Api {
 
   _checkResponse(res) {
     if (res.ok) {
+      console.log(res);
       return res.json();
     } else {
       console.log('тут')
@@ -60,5 +61,17 @@ export default class Api {
     })
     .then(this._checkResponse);
   }
+
+  deleteCard(_id) {
+    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${_id} `, {
+      method: 'DELETE',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+    })
+    .then(this._checkResponse);
+  }
+//DELETE https://mesto.nomoreparties.co/v1/cohortId/cards/cardId
 
 }

@@ -38,6 +38,7 @@ const section = new Section({
   items: [],
   renderer: (data) => {
     const card = new Card(data, '#template', handleCardClick, handleDeleteClick);
+    cards[data._id] = card;
     return card.generateCard();
   }
 },'.elements__items');
@@ -110,7 +111,11 @@ const popupWithImage = new PopupWithImage(popupImage);
 
 /** Инициализация класса PopupWithDelete для PopUp удаления карточки */
 const popupWithDelete = new PopupWithDelete(popupDelete, data => {
-
+  api.deleteCard(data)
+  .then(() => {
+    cards[data].deleteCard();
+    popupWithDelete.close();
+  })
 });
 
 
