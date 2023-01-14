@@ -17,11 +17,16 @@ export default class UserInfo {
       return userInfoData;
     }
 
+    getUserId() {
+      return this._id
+    }
+
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo({name, about, avatar}) {
+    setUserInfo({name, about, avatar, _id}) {
         this._name.textContent = name;
         this._job.textContent = about;
-        this._avatar.setAttribute('src', avatar)
+        this._avatar.setAttribute('src', avatar);
+        this._id = _id;
         }
     }

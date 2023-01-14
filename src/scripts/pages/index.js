@@ -37,7 +37,7 @@ const api = new Api(cohort, token);
 const section = new Section({
   items: [],
   renderer: (data) => {
-    const card = new Card(data, '#template', handleCardClick, handleDeleteClick);
+    const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick);
     cards[data._id] = card;
     return card.generateCard();
   }
@@ -47,7 +47,6 @@ const section = new Section({
 /** Загрузить начальные карточки */
 api.getCard()
 .then(res => {
-console.log(res);
 section.clear();
 res.forEach(data => {
 const cardNew = section.renderItems(data);
@@ -87,7 +86,6 @@ api.getUserInfo()
 
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
 const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
-  console.log(data)
   api.setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res)
