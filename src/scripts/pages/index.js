@@ -37,7 +37,7 @@ const api = new Api(cohort, token);
 const section = new Section({
   items: [],
   renderer: (data) => {
-    const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick);
+    const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick, handleLikeCard);
     cards[data._id] = card;
     return card.generateCard();
   }
@@ -61,6 +61,19 @@ function handleCardClick (name, link) {
 function handleDeleteClick (id) {
   popupWithDelete.setDeleteCard(id);
   popupWithDelete.open();
+}
+function handleLikeCard (id, isLike) {
+  if (isLike) {
+    api.deleteLike(id)
+    .then(res => {
+      cards[id].like(res.likes);
+    })
+  } else {
+    api.setLike(id)
+    .then(res => {
+      cards[id].like(res.likes);
+    })
+  }
 }
 
 /** Инициализация класса FormValidator - отвечает валидацию форм */
