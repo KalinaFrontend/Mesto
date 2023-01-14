@@ -8,7 +8,6 @@ export default class Api {
     if (res.ok) {
       return res.json();
     } else {
-      console.log('тут')
       return Promise.reject(`${res.status} ${res.statusText}`);
     }
   }
@@ -94,11 +93,15 @@ export default class Api {
     .then(this._checkResponse);
   }
 
-
- //PUT https://mesto.nomoreparties.co/v1/cohortId/cards/cardId/likes
- //DELETE https://mesto.nomoreparties.co/v1/cohortId/cards/cardId/likes
- // Вместо cardId в URL нужно подставить свойство _id соответствующей карточки.
-
-//DELETE https://mesto.nomoreparties.co/v1/cohortId/cards/cardId
-
+  updateAvatar(data) {
+    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        authorization: this._token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(this._checkResponse);
+  }
 }

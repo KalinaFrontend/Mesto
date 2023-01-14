@@ -14,6 +14,7 @@ import {
   popupAddElement,
   popupImage,
   popupDelete,
+  popupUpdateAvatar,
   popupUserNameValue,
   popupUseJobValue,
   popupUserName,
@@ -21,8 +22,10 @@ import {
   popupUserAvatar,
   popupFormProfile,
   popupFormAddElement,
+  popupFormAvatar,
   buttonEdit,
   buttonAdd,
+  buttonUpdateAvatar,
   cohort,
   token,
   settings
@@ -62,6 +65,7 @@ function handleDeleteClick (id) {
   popupWithDelete.setDeleteCard(id);
   popupWithDelete.open();
 }
+
 function handleLikeCard (id, isLike) {
   if (isLike) {
     api.deleteLike(id)
@@ -79,8 +83,10 @@ function handleLikeCard (id, isLike) {
 /** Инициализация класса FormValidator - отвечает валидацию форм */
 const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
+const popupFormWithAvatarValidation = new FormValidator(settings, popupFormAvatar);
 popupFormProfileValidation.enableValidation();
 popupFormAddElementValidation.enableValidation();
+popupFormWithAvatarValidation.enableValidation();
 
 
 /** Инициализация класса UserInfo - отвечает за управление отображением информации о пользователе на странице */
@@ -108,7 +114,6 @@ const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
 
 /** Инициализация класса PopupWithForm для PopUp добавления карточки */
 const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
-
   api.setCard(data)
   .then((res) => {
     const cardNew = section.renderItems(res);
@@ -129,11 +134,21 @@ const popupWithDelete = new PopupWithDelete(popupDelete, data => {
   })
 });
 
+/** Инициализация класса PopupWithAvatar для PopUp обновления аватара */
+const popupWithAvatar =  new PopupWithForm(popupUpdateAvatar, data => {
+  api.updateAvatar(data)
+    .then(() => {
+      userInfo.setAvatar(data);
+      popupWithAvatar.close();
+    })
+})
+
 
 popupProfileWithForm.setEventListeners();
 popupAddElementForm.setEventListeners();
 popupWithImage.setEventListeners();
 popupWithDelete.setEventListeners();
+popupWithAvatar.setEventListeners();
 
 buttonEdit.addEventListener('click', () => {
   popupProfileWithForm.setInputValues(userInfo.getUserInfo());
@@ -143,5 +158,10 @@ buttonEdit.addEventListener('click', () => {
 buttonAdd.addEventListener('click', () => {
   popupFormAddElementValidation.resetValidation();
   popupAddElementForm.open();
+});
+
+buttonUpdateAvatar.addEventListener('click', () => {
+  popupFormWithAvatarValidation.resetValidation();
+  popupWithAvatar.open();
 });
 

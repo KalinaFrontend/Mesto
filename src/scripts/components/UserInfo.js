@@ -21,6 +21,10 @@ export default class UserInfo {
       return this._id
     }
 
+    setAvatar(data) {
+      this._avatar.setAttribute('src', data.avatar);
+    }
+
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
     setUserInfo({name, about, avatar, _id}) {
