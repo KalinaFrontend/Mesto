@@ -105,11 +105,15 @@ api.getUserInfo()
 
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
 const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
+//  popupProfileWithForm.submitButtonActive();
   api.setUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res)
       popupProfileWithForm.close();
     })
+ //   .finally(() => {
+ //     popupProfileWithForm.submitButtonInactive();
+ //   })
 })
 
 /** Инициализация класса PopupWithForm для PopUp добавления карточки */
@@ -118,8 +122,8 @@ const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
   .then((res) => {
     const cardNew = section.renderItems(res);
     section.addItem(cardNew);
+    popupAddElementForm.close();
   })
-  popupAddElementForm.close();
 });
 
 /** Инициализация класса PopupWithImage для PopUp просмотра карточки */
@@ -136,11 +140,15 @@ const popupWithDelete = new PopupWithDelete(popupDelete, data => {
 
 /** Инициализация класса PopupWithAvatar для PopUp обновления аватара */
 const popupWithAvatar =  new PopupWithForm(popupUpdateAvatar, data => {
+ // popupWithAvatar.submitButtonActive();
   api.updateAvatar(data)
     .then(() => {
       userInfo.setAvatar(data);
       popupWithAvatar.close();
     })
+ //   .finally(() => {
+ //     popupWithAvatar.submitButtonInactive();
+ //   })
 })
 
 
