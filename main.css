@@ -185,7 +185,7 @@
 /*!********************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__save-button/_place/popup__save-button_place_delete-card.css ***!
   \********************************************************************************************************************************************************************************************************/
-.popup__save-button_place_delete-card{margin:35px}
+.popup__save-button_place_delete-card{margin:35px}@media screen and (max-width:640px){.popup__save-button_place_delete-card{margin:25px}}
 /*!*********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/pages/index.css ***!
   \*********************************************************************************************************************************************/
