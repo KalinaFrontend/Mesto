@@ -1,4 +1,3 @@
-import {initialCards} from '../utils/arrCards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js'
 import Section from '../components/Section.js'
@@ -7,7 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithDelete from '../components/PopupWithDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-import '../../pages/index.css';
+import '../pages/index.css';
 
 import {
   popupProfile,
@@ -15,8 +14,6 @@ import {
   popupImage,
   popupDelete,
   popupUpdateAvatar,
-  popupUserNameValue,
-  popupUseJobValue,
   popupUserName,
   popupUseJob,
   popupUserAvatar,
@@ -33,29 +30,6 @@ import {
 import { data } from 'autoprefixer';
 
 const cards = {};
-
-const api = new Api(cohort, token);
-
-/** Инициализация класса Section -  который отвечает за отрисовку элементов на странице */
-const section = new Section({
-  items: [],
-  renderer: (data) => {
-    const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick, handleLikeCard);
-    cards[data._id] = card;
-    return card.generateCard();
-  }
-},'.elements__items');
-
-
-/** Загрузить начальные карточки */
-api.getCard()
-.then(res => {
-section.clear();
-res.forEach(data => {
-const cardNew = section.renderItems(data);
-section.addItem(cardNew);
-});
-});
 
 function handleCardClick (name, link) {
   popupWithImage.open(name, link);
@@ -80,6 +54,18 @@ function handleLikeCard (id, isLike) {
   }
 }
 
+const api = new Api(cohort, token);
+
+/** Инициализация класса Section -  который отвечает за отрисовку элементов на странице */
+const section = new Section({
+  items: [],
+  renderer: (data) => {
+    const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick, handleLikeCard);
+    cards[data._id] = card;
+    return card.generateCard();
+  }
+},'.elements__items');
+
 /** Инициализация класса FormValidator - отвечает валидацию форм */
 const popupFormProfileValidation = new FormValidator(settings, popupFormProfile);
 const popupFormAddElementValidation = new FormValidator(settings, popupFormAddElement);
@@ -95,12 +81,6 @@ const userInfo = new UserInfo({
   jobSelector: popupUseJob,
   avatarSelector: popupUserAvatar
 });
-
-/** Загрузить информации о пользователе */
-api.getUserInfo()
-.then(res => {
-  userInfo.setUserInfo(res)
-})
 
 
 /** Инициализация класса PopupWithForm для PopUp редактирования профиля */
@@ -151,6 +131,21 @@ const popupWithAvatar =  new PopupWithForm(popupUpdateAvatar, data => {
       popupWithAvatar.close();
     })
 })
+
+/** Загрузить информации о пользователе и начальные карточки */
+Promise.all([
+  api.getUserInfo(),
+  api.getCard()
+])
+.then(res=> {
+  userInfo.setUserInfo(res[0]);
+  section.clear();
+  res[1].forEach(data => {
+  const cardNew = section.renderItems(data);
+  section.addItem(cardNew);
+  })
+})
+.catch(err => console.error(err));
 
 
 popupProfileWithForm.setEventListeners();
