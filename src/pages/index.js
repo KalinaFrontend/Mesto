@@ -29,28 +29,32 @@ import {
 } from '../utils/constants.js'
 import { data } from 'autoprefixer';
 
-const cards = {};
-
 function handleCardClick (name, link) {
   popupWithImage.open(name, link);
 }
 
-function handleDeleteClick (id) {
-  popupWithDelete.setDeleteCard(id);
+function handleDeleteClick (card) {
+  popupWithDelete.setDeleteCard(card);
   popupWithDelete.open();
 }
 
-function handleLikeCard (id, isLike) {
-  if (isLike) {
-    api.deleteLike(id)
+function handleLikeCard (card) {
+  if (card._isLike) {
+    api.deleteLike(card._id)
     .then(res => {
-      cards[id].like(res.likes);
+      card.numberOfLikes(res.likes);
+      card.statusLike();
+      card.toggleLike();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`));
   } else {
-    api.setLike(id)
+    api.setLike(card._id)
     .then(res => {
-      cards[id].like(res.likes);
+      card.numberOfLikes(res.likes);
+      card.statusLike();
+      card.toggleLike();
     })
+    .catch(err => console.log(`Ошибка.....: ${err}`));
   }
 }
 
@@ -61,7 +65,6 @@ const section = new Section({
   items: [],
   renderer: (data) => {
     const card = new Card(data, userInfo.getUserId(), '#template', handleCardClick, handleDeleteClick, handleLikeCard);
-    cards[data._id] = card;
     return card.generateCard();
   }
 },'.elements__items');
@@ -87,11 +90,12 @@ const userInfo = new UserInfo({
 const popupProfileWithForm = new PopupWithForm(popupProfile, data => {
   api.setUserInfo(data)
     .then((res) => {
-      userInfo.setUserInfo(res)
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
+      userInfo.setUserInfo(res);
       popupProfileWithForm.close();
+    })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
+    .finally(() => {
+    popupProfileWithForm.submitButtonInactive();
     })
 })
 
@@ -101,10 +105,11 @@ const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
   .then((res) => {
     const cardNew = section.renderItems(res);
     section.addItem(cardNew);
-  })
-  .catch(err => console.error(err))
-  .finally(() => {
     popupAddElementForm.close();
+  })
+  .catch(err => console.log(`Ошибка.....: ${err}`))
+  .finally(() => {
+    popupAddElementForm.submitButtonInactive();
   })
 });
 
@@ -112,12 +117,13 @@ const popupAddElementForm = new PopupWithForm(popupAddElement, data => {
 const popupWithImage = new PopupWithImage(popupImage);
 
 /** Инициализация класса PopupWithDelete для PopUp удаления карточки */
-const popupWithDelete = new PopupWithDelete(popupDelete, data => {
-  api.deleteCard(data)
+const popupWithDelete = new PopupWithDelete(popupDelete, card => {
+  api.deleteCard(card._id)
   .then(() => {
-    cards[data].deleteCard();
+    card.deleteCard();
     popupWithDelete.close();
   })
+  .catch(err => console.log(`Ошибка.....: ${err}`));
 });
 
 /** Инициализация класса PopupWithAvatar для PopUp обновления аватара */
@@ -125,10 +131,11 @@ const popupWithAvatar =  new PopupWithForm(popupUpdateAvatar, data => {
   api.updateAvatar(data)
     .then(() => {
       userInfo.setAvatar(data);
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
       popupWithAvatar.close();
+    })
+    .catch(err => console.log(`Ошибка.....: ${err}`))
+    .finally(() => {
+      popupWithAvatar.submitButtonInactive();
     })
 })
 

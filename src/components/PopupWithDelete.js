@@ -7,14 +7,14 @@ export default class PopupWithDelete extends Popup {
     this._button = this._popupElememt.querySelector('.popup__save-button_place_delete-card')
   }
 
-  setDeleteCard(id) {
-    this._id = id;
+  setDeleteCard(card) {
+    this._card = card;
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._button.addEventListener('click', () => {
-      this._popupSubmitСallback(this._id);
+      this._popupSubmitСallback(this._card);
     });
   }
 }
