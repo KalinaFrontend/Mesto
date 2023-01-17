@@ -30,8 +30,9 @@ export default class Card {
       if (this._userId !== this._owner._id) {
         this._deleteElement.remove();
       }
+      this._elementsItemLike = this._cardElement.querySelector('.elements__item-like');
       if (this._like.find(item => item._id == this._userId)) {
-        this._cardElement.querySelector('.elements__item-like').classList.add('element__item-like_type_active');
+        this._elementsItemLike.classList.add('element__item-like_type_active');
         this._isLike = true;
       }
       this._setEventListener();
@@ -49,7 +50,7 @@ export default class Card {
   }
 
   toggleLike() {
-    this._cardElement.classList.toggle('element__item-like_type_active');
+    this._elementsItemLike.classList.toggle('element__item-like_type_active');
   }
 
   deleteCard() {
